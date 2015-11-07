@@ -15,7 +15,7 @@
     <body>
         <div>
             <form action="sampleServlet" method="post">
-                Data <input id="iddata" type="text" name="data" value="" />
+                Data <input id="iddata" type="text" name="data" value="Data" />
                 <input type="submit" value="Submit" name="submit" />
             </form>
         </div>
