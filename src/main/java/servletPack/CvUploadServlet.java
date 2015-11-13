@@ -25,13 +25,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class CvUploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
      
+    private static final String UPLOAD_PATH = "C:\\Users\\chalaka\\Documents";
     // location to store file uploaded
     private static final String UPLOAD_DIRECTORY = "upload";
  
     // upload settings
-    private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE      = 1024 * 1024 * 40; // 40MB
-    private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 50; // 50MB
+    private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 5 ;  // 5MB
+    private static final int MAX_FILE_SIZE      = 1024 * 1024 * 15; // 15MB
+    private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 17; // 17MB
  
     /**
      * Upon receiving file upload submission, parses the request to read
@@ -69,8 +70,8 @@ public class CvUploadServlet extends HttpServlet {
  
         // constructs the directory path to store upload file
         // this path is relative to application's directory
-        String uploadPath = getServletContext().getRealPath("") 
-                + File.separator + UPLOAD_DIRECTORY;
+        String uploadPath = UPLOAD_PATH + File.separator + UPLOAD_DIRECTORY;
+               
                
         // creates the directory if it does not exist
         File uploadDir = new File(uploadPath);
