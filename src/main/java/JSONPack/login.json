@@ -1,0 +1,82 @@
+{
+    "Company": [
+        {
+            "Username": "WSO2",
+            "Password": "c1"
+        },
+        {
+            "Username": "LeapSet",
+            "Password": "c2"
+        },
+        {
+            "Username": "Virtusa",
+            "Password": "c3"
+        },
+        {
+            "Username": "Codegen",
+            "Password": "c4"
+        }],
+    "Staff":
+            [{
+                    "Username": "staff1",
+                    "Password": "s1"
+                },
+                {
+                    "Username": "staff2",
+                    "Password": "s2"
+                },
+                {
+                    "Username": "staff3",
+                    "Password": "s3"
+                }],
+    "Student":
+            [{
+                    "Username": "e12001",
+                    "Password": "001"
+                },
+                {
+                    "Username": "e12002",
+                    "Password": "002"
+                },
+                {
+                    "Username": "e12003",
+                    "Password": "003"
+                },
+                {
+                    "Username": "e12004",
+                    "Password": "004"
+                },
+                {
+                    "Username": "e12005",
+                    "Password": "005"
+                },
+                {
+                    "Username": "e12006",
+                    "Password": "006"
+                },
+                {
+                    "Username": "e12007",
+                    "Password": "007"
+                },
+                {
+                    "Username": "e12008",
+                    "Password": "008"
+                },
+                {
+                    "Username": "e12009",
+                    "Password": "009"
+                },
+                {
+                    "Username": "e12010",
+                    "Password": "010"
+                }],
+    "Admin":
+            [{
+                    "Username": "admin1",
+                    "Password": "abc1"
+                },
+                {
+                    "Username": "admin2",
+                    "Password": "abc2"
+                }]
+}
