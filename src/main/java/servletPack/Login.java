@@ -19,7 +19,7 @@ import javax.servlet.RequestDispatcher;
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
 
-    private static final String jsonFilePath = "C:\\Users\\Sanduni\\Desktop\\Project\\jsonFile.json";
+    private static final String jsonFilePath = "C:\\Users\\Chalaka\\Documents\\NetBeansProjects\\webportal\\src\\main\\java\\JSONPack\\login.json";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,6 +42,12 @@ public class Login extends HttpServlet {
             FileReader fileReader = new FileReader(jsonFilePath);
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
             names = (JSONArray) jsonObject.get("Student");
+
+            if (names == null) {
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.jsp");
+                request.setAttribute("error", 1);
+                rd.include(request, response);
+            }
             i = names.listIterator();
 
             while (i.hasNext()) {
@@ -52,7 +58,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("username", username);
                     session.setAttribute("type", "Student");
                     session.setMaxInactiveInterval(30 * 60);
-                    Cookie userName = new Cookie("user", username);
+                    Cookie userName = new Cookie("username", username);
                     userName.setMaxAge(30 * 60);
                     response.addCookie(userName);
                     response.sendRedirect("homeStudent.jsp");
@@ -70,7 +76,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("username", username);
                     session.setAttribute("type", "Admin");
                     session.setMaxInactiveInterval(30 * 60);
-                    Cookie userName = new Cookie("user", username);
+                    Cookie userName = new Cookie("username", username);
                     userName.setMaxAge(30 * 60);
                     response.addCookie(userName);
                     response.sendRedirect("homeAdmin.jsp");
@@ -88,7 +94,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("username", username);
                     session.setAttribute("type", "Company");
                     session.setMaxInactiveInterval(30 * 60);
-                    Cookie userName = new Cookie("user", username);
+                    Cookie userName = new Cookie("username", username);
                     userName.setMaxAge(30 * 60);
                     response.addCookie(userName);
                     response.sendRedirect("homeCompany.jsp");
@@ -106,7 +112,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("username", username);
                     session.setAttribute("type", "Staff");
                     session.setMaxInactiveInterval(30 * 60);
-                    Cookie userName = new Cookie("user", username);
+                    Cookie userName = new Cookie("username", username);
                     userName.setMaxAge(30 * 60);
                     response.addCookie(userName);
                     response.sendRedirect("homeStaff.jsp");

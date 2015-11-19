@@ -78,8 +78,9 @@ public class CvUploadServlet extends HttpServlet {
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
- 
+        PrintWriter out = response.getWriter();
         try {
+                    
             // parses the request's content to extract file data
             @SuppressWarnings("unchecked")
             List<FileItem> formItems = upload.parseRequest(request);
@@ -95,17 +96,22 @@ public class CvUploadServlet extends HttpServlet {
  
                         // saves the file on disk
                         item.write(storeFile);
-                        request.setAttribute("message",
-                            "Upload has been done successfully!");
+                      
+                                out.println("<script type=\"text/javascript\">");
+                                out.println("alert('Upload has been done successfully!');");
+                                out.println("location='homeStudent.jsp';");
+                                out.println("</script>");
                     }
                 }
             }
         } catch (Exception ex) {
             request.setAttribute("message",
                     "There was an error: " + ex.getMessage());
+                     out.println("<script type=\"text/javascript\">");
+                     out.println("alert('Unable to upload!!!');");
+                     out.println("location='homeStudent.jsp';");
+                     out.println("</script>");
         }
-        // redirects client to message page
-        getServletContext().getRequestDispatcher("/message.jsp").forward(
-                request, response);
+       
     }
 }

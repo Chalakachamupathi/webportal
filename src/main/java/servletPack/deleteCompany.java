@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ListIterator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +25,7 @@ import org.json.simple.parser.JSONParser;
 @WebServlet(name = "deleteCompany", urlPatterns = {"/deleteCompany"})
 public class deleteCompany extends HttpServlet {
 
-    private static final String jsonFilePath = "C:\\Users\\Sanduni\\Documents\\NetBeansProjects\\PortalA\\src\\main\\java\\JSONPack\\jsonFile.json";
+    private static final String jsonFilePath = "C:\\Users\\Chalaka\\Documents\\NetBeansProjects\\webportal\\src\\main\\java\\JSONPack\\jsonFile.json";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

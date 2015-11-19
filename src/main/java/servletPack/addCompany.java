@@ -5,12 +5,11 @@
  */
 package servletPack;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ListIterator;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -27,33 +25,47 @@ import org.json.simple.parser.ParseException;
  */
 @WebServlet(name = "addCompany", urlPatterns = {"/addCompany"})
 public class addCompany extends HttpServlet {
-
-    private static final String jsonFilePath = "C:\\Users\\Sanduni\\Documents\\NetBeansProjects\\PortalA\\src\\main\\java\\JSONPack\\jsonFile.json";
-
+    
+    private static final String jsonFilePath = "C:\\Users\\Chalaka\\Documents\\NetBeansProjects\\webportal\\src\\main\\java\\JSONPack\\jsonFile.json";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         JSONParser jsonParser = new JSONParser();
-
+        
         try {
-
+            
             FileReader fileReader = new FileReader(jsonFilePath);
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
-
+            
             JSONArray names = (JSONArray) jsonObject.get("Company");
-            names.add(request.getParameter("name"));
-            jsonObject.put("Company", names);
+            
+            if (names == null) {
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/homaAdmin.jsp");
+                request.setAttribute("error", "2");
+                rd.include(request, response);
+            }
             
             PrintWriter a = response.getWriter();
-                        
-            FileWriter jsonFileWriter = new FileWriter(jsonFilePath);
-            jsonFileWriter.write(jsonObject.toJSONString());
-            jsonFileWriter.flush();
-            jsonFileWriter.close();
-
-            a.write("1");
-
+            
+            if (names.contains(request.getParameter("name"))) {
+                a.write("3");
+                
+            } else if (request.getParameter("name") == null || request.getParameter("name").equals("")) {
+                a.write("4");
+            } else {
+                names.add(request.getParameter("name"));
+                jsonObject.put("Company", names);
+                
+                FileWriter jsonFileWriter = new FileWriter(jsonFilePath);
+                jsonFileWriter.write(jsonObject.toJSONString());
+                jsonFileWriter.flush();
+                jsonFileWriter.close();
+                
+                a.write("1");
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

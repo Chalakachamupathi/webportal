@@ -8,6 +8,8 @@ package servletPack;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ListIterator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +40,12 @@ public class loadCompany extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String jsonFilePath = "C:\\Users\\Sanduni\\Documents\\NetBeansProjects\\PortalA\\src\\main\\java\\JSONPack\\jsonFile.json";
+        String jsonFilePath = "C:\\Users\\Chalaka\\Documents\\NetBeansProjects\\webportal\\src\\main\\java\\JSONPack\\jsonFile.json";
         JSONParser jsonParser = new JSONParser();
+
+        String order = request.getParameter("order");
+        int limit = Integer.parseInt(request.getParameter("limit"));
+        int page = Integer.parseInt(request.getParameter("page"));
 
         try {
             PrintWriter a = response.getWriter();
@@ -48,26 +54,51 @@ public class loadCompany extends HttpServlet {
 
             JSONArray company = (JSONArray) jsonObject.get("Company");
             ListIterator i = company.listIterator();
-//<tr>
-//                <td><%=i.nextIndex()%></td>
-//                <td><%=i.next()%></td>
-//                <td>
-//                    <a href="#">Update</a>
-//                    <a style="padding-left: 30px;" href="#">Delete</a>
-//                </td>
-//            </tr>
+            ArrayList l = new ArrayList();
+
             while (i.hasNext()) {
-                int j = i.nextIndex()+1;
+                int j = i.nextIndex() + 1;
                 String comp = i.next().toString();
-                a.append("<tr>"
-                        + "<td>"+ j +"</td>"
-                        + "<td>"+comp+"</td>"
-                        + "<td>"
-                        + "<a href=\"#\" onclick=\"updateC('"+ comp +"','"+ (j-1) +"')\">Update</a>"
-                        + "<a style=\"padding-left: 30px;\" href=\"#\" onclick=\"deleteCompany("+j+")\">Delete</a>"
-                        + "</td>"
-                        + "</tr>");
+                l.add(j - 1, comp);
             }
+
+            int start = 0, end = l.size();
+
+            if (limit != 0) {
+                start = page * limit;
+                end = start + limit;
+
+                if (end > l.size()) {
+                    end = l.size();
+                }
+            }
+
+            if (order.equals("2")) {
+                Collections.sort(l);
+
+                for (int k = start; k < end; k++) {
+                    a.append("<tr>"
+                            + "<td>" + (k + 1) + "</td>"
+                            + "<td>" + l.get(k) + "</td>"
+                            + "<td>"
+                            + "<a href=\"#\" onclick=\"updateC('" + l.get(k) + "','" + k + "')\">Update</a>"
+                            + "<a style=\"padding-left: 30px;\" href=\"#\" onclick=\"deleteCompany(" + (k + 1) + ")\">Delete</a>"
+                            + "</td>"
+                            + "</tr>");
+                }
+            } else {
+                for (int k = end-1; k >= start; k--) {
+                    a.append("<tr>"
+                            + "<td>" + (end - k) + "</td>"
+                            + "<td>" + l.get(k) + "</td>"
+                            + "<td>"
+                            + "<a href=\"#\" onclick=\"updateC('" + l.get(k) + "','" + k + "')\">Update</a>"
+                            + "<a style=\"padding-left: 30px;\" href=\"#\" onclick=\"deleteCompany(" + (k + 1) + ")\">Delete</a>"
+                            + "</td>"
+                            + "</tr>");
+                }
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

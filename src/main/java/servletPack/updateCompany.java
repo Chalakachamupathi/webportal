@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,12 +25,12 @@ import org.json.simple.parser.JSONParser;
 @WebServlet(name = "updateCompany", urlPatterns = {"/updateCompany"})
 public class updateCompany extends HttpServlet {
 
-    private static final String jsonFilePath = "C:\\Users\\Sanduni\\Documents\\NetBeansProjects\\PortalA\\src\\main\\java\\JSONPack\\jsonFile.json";
+    private static final String jsonFilePath = "C:\\Users\\Chalaka\\Documents\\NetBeansProjects\\webportal\\src\\main\\java\\JSONPack\\jsonFile.json";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         JSONParser jsonParser = new JSONParser();
 
         try {
@@ -41,11 +40,11 @@ public class updateCompany extends HttpServlet {
 
             JSONArray names = (JSONArray) jsonObject.get("Company");
             names.set(index, request.getParameter("name"));
-            
+
             jsonObject.put("Company", names);
-            
+
             PrintWriter a = response.getWriter();
-                        
+
             FileWriter jsonFileWriter = new FileWriter(jsonFilePath);
             jsonFileWriter.write(jsonObject.toJSONString());
             jsonFileWriter.flush();
