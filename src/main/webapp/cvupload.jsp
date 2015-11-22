@@ -7,7 +7,7 @@
             Select file to upload:
             <input type="file" name="uploadFile" />
             <br/><br/>
-            <input type="submit" value="Upload" onclick="loadUploadsServlet()" />
+            <input type="submit" value="Upload"  />
             <form>
     </center>
 

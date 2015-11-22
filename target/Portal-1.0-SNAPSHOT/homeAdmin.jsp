@@ -242,6 +242,18 @@
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send("order=" + order + "&limit=" + limit + "&page=" + val);
             }
+            
+            function loadEmails() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("demo").innerHTML = xhttp.responseText;
+                    //loadProgressList();
+                }
+            }
+            xhttp.open("GET", "emailform.jsp", true);
+            xhttp.send();
+        }
         </script>
     </head>
     <body onload="loadCompany()">
@@ -250,7 +262,7 @@
                 <li class="liclass"><a onclick="loadCompany()" href='#'><span>Manage Companies</span></a></li>
                 <li class="liclass"><a onclick="loadStudent()" href='#'><span>Student Preferences</span></a></li>
                 <li class="liclass"><a href='#'><span>Manage Students</span></a></li>
-                <li class="liclass"><a href='#'><span>Messaging</span></a></li>
+                <li class="liclass"><a onclick="loadEmails()" href='#'><span>Messaging</span></a></li>
                 <li class="liclass"><a href="Logout"><label id="labelhover">Logout</label></a></li>
                 <li class="liclass2"><label>You are logged in as <%= name%></label></li>
             </ul>

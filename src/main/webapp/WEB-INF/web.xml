@@ -19,6 +19,10 @@
         <servlet-name>DownloadZip</servlet-name>
         <servlet-class>servletPack.DownloadZip</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmailSendingServlet</servlet-name>
+        <servlet-class>servletPack.EmailSendingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CvUploadServlet</servlet-name>
         <url-pattern>/CvUploadServlet</url-pattern>
@@ -35,6 +39,45 @@
         <servlet-name>DownloadZip</servlet-name>
         <url-pattern>/DownloadZip</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmailSendingServlet</servlet-name>
+        <url-pattern>/EmailSendingServlet</url-pattern>
+    </servlet-mapping>
+     <!-- SMTP settings -->
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>587</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>chalakachamupathi@gmail.com</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>qgwiwbjxozpydzhc</param-value>
+    </context-param>
+    
+    <context-param>
+    <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>587</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>chalakachamupathi@gmail.com</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>yourpassword</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30

@@ -1,5 +1,6 @@
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\loadStudent.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\Logout.java
+C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\EmailSendingServlet.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\updateCompanyPreferences.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\staffStudentStates.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\Login.java
@@ -13,5 +14,6 @@ C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\studentPrefAdd.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\addCompany.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\studentProgress.java
+C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\EmailUtilaty.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\updateCompany.java
 C:\Users\chalaka\Documents\NetBeansProjects\webportal\src\main\java\servletPack\preferenceLimit.java

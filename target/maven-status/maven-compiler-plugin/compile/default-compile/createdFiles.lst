@@ -1,5 +1,6 @@
 servletPack\updateCompany.class
 servletPack\Login.class
+servletPack\EmailSendingServlet.class
 servletPack\CvUploadServlet.class
 servletPack\loadStudent.class
 servletPack\companyPreferences.class
@@ -7,6 +8,8 @@ servletPack\DownloadZip.class
 servletPack\studentPreferences.class
 servletPack\DownloadFileServlet.class
 servletPack\studentProgress.class
+servletPack\EmailUtilaty.class
+servletPack\EmailUtilaty$1.class
 servletPack\staffStudentStates.class
 servletPack\preferenceLimit.class
 servletPack\updateCompanyPreferences.class
